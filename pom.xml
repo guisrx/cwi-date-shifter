@@ -20,16 +20,30 @@
         <java.source.version>1.7</java.source.version>
         <java.target.version>1.7</java.target.version>
 
+        <junit.version>4.11</junit.version>
 
     </properties>
     
     <dependencyManagement>
         <dependencies>
 
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
         
     </dependencies>
 
