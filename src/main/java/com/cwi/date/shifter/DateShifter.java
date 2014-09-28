@@ -60,12 +60,13 @@ public class DateShifter {
 
 
 		// month
+		final Month[] months = Month.values();
 		long dateMinusMonth = dateMinusYears;
 		Month currentMonth = Month.JANUARY;
 
-		for (final Month month : Month.values()) {
+		for (final Month month : months) {
 
-			if (month.fitInMonth(dateMinusYears)) {
+			if (month.fitInMonth(dateMinusMonth)) {
 				dateMinusMonth -= month.getMinutes();
 				currentMonth = month;
 			}

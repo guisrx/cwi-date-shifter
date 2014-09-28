@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cwi.date.shifter.support.DateParser;
+import com.cwi.date.shifter.support.DateWriter;
+import com.cwi.date.shifter.validation.OperationValidator;
 
 /**
  * Test class of {@link DateShifter}.
@@ -14,13 +16,17 @@ import com.cwi.date.shifter.support.DateParser;
  */
 public class DateShifterTests {
 
+	private OperationValidator operationValidator;
 	private DateParser parser;
+	private DateWriter writer;
 	private DateShifter subject;
 
 	@Before
 	public void before() {
+		operationValidator = new OperationValidator();
 		parser = new DateParser();
-		subject = new DateShifter(parser);
+		writer = new DateWriter();
+		subject = new DateShifter(parser, writer, operationValidator);
 	}
 
 	@Test
