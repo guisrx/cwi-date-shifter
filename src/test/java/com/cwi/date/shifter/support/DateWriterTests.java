@@ -1,4 +1,4 @@
-package com.cwi.date.shifter;
+package com.cwi.date.shifter.support;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cwi.date.shifter.domain.Date;
+import com.cwi.date.shifter.support.DateParser;
+import com.cwi.date.shifter.support.DateWriter;
 
 /**
  * Test class of {@link DateWriter}.

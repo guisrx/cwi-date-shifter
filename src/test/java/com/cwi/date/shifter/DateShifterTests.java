@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.cwi.date.shifter.support.DateParser;
+
 /**
  * Test class of {@link DateShifter}.
  * @author selau

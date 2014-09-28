@@ -1,4 +1,4 @@
-package com.cwi.date.shifter;
+package com.cwi.date.shifter.support;
 
 import com.cwi.date.shifter.domain.Date;
 
@@ -12,7 +12,7 @@ public class DateWriter {
 	private static final String DATE_FORMAT = "%02d/%02d/%04d %02d:%02d";
 
 
-	public String write(Date date) {
+	public String write(final Date date) {
 
 		final String dateFormated = String.format(
 				DATE_FORMAT,
