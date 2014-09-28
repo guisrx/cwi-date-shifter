@@ -12,11 +12,13 @@ import org.junit.Test;
  */
 public class DateShifterTests {
 
+	private DateParser parser;
 	private DateShifter subject;
 
 	@Before
 	public void before() {
-		subject = new DateShifter();
+		parser = new DateParser();
+		subject = new DateShifter(parser);
 	}
 
 	@Test
