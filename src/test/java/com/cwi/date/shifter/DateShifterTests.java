@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import com.cwi.date.shifter.support.DateParser;
 import com.cwi.date.shifter.support.DateWriter;
+import com.cwi.date.shifter.support.MinutesDateConverter;
 import com.cwi.date.shifter.validation.DateValidator;
 import com.cwi.date.shifter.validation.OperationValidator;
 
@@ -19,6 +20,7 @@ public class DateShifterTests {
 
 	private OperationValidator operationValidator;
 	private DateValidator dateValidator;
+	private MinutesDateConverter minutesToDateConversor;
 	private DateParser parser;
 	private DateWriter writer;
 	private DateShifter subject;
@@ -27,9 +29,10 @@ public class DateShifterTests {
 	public void before() {
 		operationValidator = new OperationValidator();
 		dateValidator = new DateValidator();
+		minutesToDateConversor = new MinutesDateConverter();
 		parser = new DateParser(dateValidator);
 		writer = new DateWriter();
-		subject = new DateShifter(parser, writer, operationValidator, dateValidator);
+		subject = new DateShifter(parser, writer, operationValidator, dateValidator, minutesToDateConversor);
 	}
 
 	@Test

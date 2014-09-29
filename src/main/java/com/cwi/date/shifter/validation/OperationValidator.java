@@ -7,12 +7,15 @@ package com.cwi.date.shifter.validation;
  */
 public class OperationValidator {
 
+	public static final char SUBTRACTION_OPERATION = '-';
+	public static final char SUM_OPERATION = '+';
+
 	public void validate(final char operation) {
 
 		switch(operation) {
 
-			case '+':
-			case '-':
+			case SUBTRACTION_OPERATION:
+			case SUM_OPERATION:
 				break;
 
 			default:

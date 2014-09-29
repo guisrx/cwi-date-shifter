@@ -1,9 +1,12 @@
 package com.cwi.date.shifter;
 
+import static com.cwi.date.shifter.validation.OperationValidator.SUBTRACTION_OPERATION;
+import static com.cwi.date.shifter.validation.OperationValidator.SUM_OPERATION;
+
 import com.cwi.date.shifter.domain.Date;
-import com.cwi.date.shifter.domain.Month;
 import com.cwi.date.shifter.support.DateParser;
 import com.cwi.date.shifter.support.DateWriter;
+import com.cwi.date.shifter.support.MinutesDateConverter;
 import com.cwi.date.shifter.validation.DateValidator;
 import com.cwi.date.shifter.validation.OperationValidator;
 
@@ -14,31 +17,25 @@ import com.cwi.date.shifter.validation.OperationValidator;
  */
 public class DateShifter {
 
-	private static final char SUBTRACTION_OPERATION = '-';
-	private static final char SUM_OPERATION = '+';
-
-	private final long MINUTES_IN_A_YEAR = 525600;
-	private final long MINUTES_IN_A_DAY = 1440;
-	private final long MINUTES_IN_A_HOUR = 60;
-
-
 	private final DateParser parser;
 	private final DateWriter writer;
 	private final OperationValidator operationValidator;
 	private final DateValidator dateValidator;
+	private final MinutesDateConverter minutesDateConverter;
 
 	public DateShifter(
 			DateParser parser,
 			DateWriter writer,
 			OperationValidator operationValidator,
-			DateValidator dateValidator) {
+			DateValidator dateValidator,
+			MinutesDateConverter minutesDateConverter) {
 
 		this.parser = parser;
 		this.writer = writer;
 		this.operationValidator = operationValidator;
 		this.dateValidator = dateValidator;
+		this.minutesDateConverter = minutesDateConverter;
 	}
-
 
 	public String changeDate(final String date, final char operation, final long minutes) {
 
@@ -50,70 +47,14 @@ public class DateShifter {
 		final long givenMinutes = Math.abs(minutes);
 
 		// calculate
-		final long givenDateInMinutes = convertGivenDateToMinutes(givenDate);
-
+		final long givenDateInMinutes = minutesDateConverter.convert(givenDate);
 		final long calculatedDateInMinutes = executeOperation(operation, givenMinutes, givenDateInMinutes);
-
-		System.out.println("calculatedDateInMinutes: " + calculatedDateInMinutes);
-
-
-		// convert minutes to date
-
-		// year
-		final int finalYear = (int)Math.floor(calculatedDateInMinutes / MINUTES_IN_A_YEAR);
-		final long dateMinusYears = calculatedDateInMinutes - finalYear * MINUTES_IN_A_YEAR;
-
-		System.out.println("dateMinusYears: " + finalYear * MINUTES_IN_A_YEAR);
-
-
-		// month
-		final Month[] months = Month.values();
-		long dateMinusMonth = dateMinusYears;
-		Month currentMonth = Month.JANUARY;
-
-		for (final Month month : months) {
-			currentMonth = month;
-
-			if (month.fitInMonth(dateMinusMonth)) {
-				System.out.println("month: " + month + " minutos tenho: " + dateMinusMonth);
-				dateMinusMonth -= month.getMinutes();
-				System.out.println("minutos fiquei: " + dateMinusMonth + " month: " + month.getMinutes());
-			} else {
-				break;
-			}
-		}
-		final int finalMonth = currentMonth.getMonthNumber();
-
-
-
-		// day
-		final int finalDay = (int)Math.floor(dateMinusMonth / MINUTES_IN_A_DAY);
-		final long dateMinusDays = dateMinusMonth - finalDay * MINUTES_IN_A_DAY;
-
-		System.out.println("dateMinusDays: " + finalDay * MINUTES_IN_A_DAY);
-
-
-		// hour
-		final int finalHour = (int)Math.floor(dateMinusDays / MINUTES_IN_A_HOUR);
-		final long dateMinusHours = dateMinusDays - finalHour * MINUTES_IN_A_HOUR;
-
-		System.out.println("dateMinusHours: " + finalHour * MINUTES_IN_A_HOUR);
-
-
-		// minute
-		final int finalMinute = (int)dateMinusHours;
-
-		System.out.println("finalMinute: " + finalMinute);
-
-
-		// write result
-		final Date finalDate = new Date(finalDay +1, finalMonth, finalYear, finalHour, finalMinute);
+		final Date finalDate = minutesDateConverter.convert(calculatedDateInMinutes);
 
 		dateValidator.validate(finalDate);
 
 		return writer.write(finalDate);
 	}
-
 
 	private long executeOperation(
 			final char operation,
@@ -131,45 +72,6 @@ public class DateShifter {
 			default:
 				throw new IllegalArgumentException("Illegal operation: '" + operation + "' allowed: '+' or '-'.");
 		}
-	}
-
-	private long convertGivenDateToMinutes(final Date givenDate) {
-
-		final long yearMinutes = MINUTES_IN_A_YEAR * givenDate.getYear();
-		System.out.println("yearMinutes: " + yearMinutes);
-
-		final long monthMinutes = firstYearMinuteToMonthInMinutes(givenDate.getMonth());
-		System.out.println("monthMinutes: " + monthMinutes);
-
-		final long dayMinutes = MINUTES_IN_A_DAY * (givenDate.getDay() -1);
-		System.out.println("dayMinutes: " + dayMinutes);
-
-		final long hourMinutes = MINUTES_IN_A_HOUR * givenDate.getHour();
-		System.out.println("hourMinutes: " + hourMinutes);
-
-		final long minute = givenDate.getMinute();
-		System.out.println("minute: " + minute);
-
-		final long givenDateInMinutes =
-				yearMinutes +
-				monthMinutes +
-				dayMinutes +
-				hourMinutes +
-				minute;
-
-		return givenDateInMinutes;
-	}
-
-	private long firstYearMinuteToMonthInMinutes(final int month) {
-
-		final Month[] months = Month.values();
-		long minutesAccumulated = 0;
-
-		for (int i = 0; i < month-1; i++) {
-			minutesAccumulated += months[i].getMinutes();
-		}
-
-		return minutesAccumulated;
 	}
 
 }
