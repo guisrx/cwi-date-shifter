@@ -15,7 +15,7 @@ import com.cwi.date.operator.validation.OperationValidator;
  * @author selau
  *
  */
-public class DateShifter {
+public class DateOperator {
 
 	private final DateParser parser;
 	private final DateWriter writer;
@@ -23,7 +23,7 @@ public class DateShifter {
 	private final DateValidator dateValidator;
 	private final MinutesDateConverter minutesDateConverter;
 
-	public DateShifter(
+	public DateOperator(
 			DateParser parser,
 			DateWriter writer,
 			OperationValidator operationValidator,

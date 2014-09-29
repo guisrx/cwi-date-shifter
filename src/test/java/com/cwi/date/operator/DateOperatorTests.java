@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.cwi.date.operator.DateShifter;
+import com.cwi.date.operator.DateOperator;
 import com.cwi.date.operator.support.DateParser;
 import com.cwi.date.operator.support.DateWriter;
 import com.cwi.date.operator.support.MinutesDateConverter;
@@ -13,18 +13,18 @@ import com.cwi.date.operator.validation.DateValidator;
 import com.cwi.date.operator.validation.OperationValidator;
 
 /**
- * Test class of {@link DateShifter}.
+ * Test class of {@link DateOperator}.
  * @author selau
  *
  */
-public class DateShifterTests {
+public class DateOperatorTests {
 
 	private OperationValidator operationValidator;
 	private DateValidator dateValidator;
 	private MinutesDateConverter minutesToDateConversor;
 	private DateParser parser;
 	private DateWriter writer;
-	private DateShifter subject;
+	private DateOperator subject;
 
 	@Before
 	public void before() {
@@ -33,7 +33,7 @@ public class DateShifterTests {
 		minutesToDateConversor = new MinutesDateConverter();
 		parser = new DateParser(dateValidator);
 		writer = new DateWriter();
-		subject = new DateShifter(parser, writer, operationValidator, dateValidator, minutesToDateConversor);
+		subject = new DateOperator(parser, writer, operationValidator, dateValidator, minutesToDateConversor);
 	}
 
 	@Test
