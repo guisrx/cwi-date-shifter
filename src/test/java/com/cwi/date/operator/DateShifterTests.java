@@ -1,15 +1,16 @@
-package com.cwi.date.shifter;
+package com.cwi.date.operator;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.cwi.date.shifter.support.DateParser;
-import com.cwi.date.shifter.support.DateWriter;
-import com.cwi.date.shifter.support.MinutesDateConverter;
-import com.cwi.date.shifter.validation.DateValidator;
-import com.cwi.date.shifter.validation.OperationValidator;
+import com.cwi.date.operator.DateShifter;
+import com.cwi.date.operator.support.DateParser;
+import com.cwi.date.operator.support.DateWriter;
+import com.cwi.date.operator.support.MinutesDateConverter;
+import com.cwi.date.operator.validation.DateValidator;
+import com.cwi.date.operator.validation.OperationValidator;
 
 /**
  * Test class of {@link DateShifter}.

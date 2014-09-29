@@ -1,4 +1,4 @@
-package com.cwi.date.shifter.validation;
+package com.cwi.date.operator.validation;
 
 /**
  * Validator of the allowed operation in the shifter.

@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cwi</groupId>
-    <artifactId>cwi-date-shifter</artifactId>
+    <artifactId>cwi-date-operator</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <name>cwi-date-shifter</name>
+    <name>cwi-date-operator</name>
   
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

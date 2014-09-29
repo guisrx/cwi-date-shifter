@@ -1,4 +1,4 @@
-package com.cwi.date.shifter.domain;
+package com.cwi.date.operator.domain;
 
 /**
  * Entity to represent a date as day, month, year, hour and minute.

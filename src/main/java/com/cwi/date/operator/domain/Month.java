@@ -1,4 +1,4 @@
-package com.cwi.date.shifter.domain;
+package com.cwi.date.operator.domain;
 
 /**
  * Enumeration of month in a year with its minutes duration.

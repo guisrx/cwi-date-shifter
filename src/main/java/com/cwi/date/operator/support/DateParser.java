@@ -1,10 +1,10 @@
-package com.cwi.date.shifter.support;
+package com.cwi.date.operator.support;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.cwi.date.shifter.domain.Date;
-import com.cwi.date.shifter.validation.DateValidator;
+import com.cwi.date.operator.domain.Date;
+import com.cwi.date.operator.validation.DateValidator;
 
 /**
  * Entity to encapsulate date parsing.

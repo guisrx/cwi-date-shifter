@@ -1,9 +1,10 @@
-package com.cwi.date.shifter.validation;
+package com.cwi.date.operator.validation;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.cwi.date.shifter.domain.Date;
+import com.cwi.date.operator.domain.Date;
+import com.cwi.date.operator.validation.DateValidator;
 
 /**
  * Tests of {@link DateValidator}.

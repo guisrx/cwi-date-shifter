@@ -1,6 +1,6 @@
-package com.cwi.date.shifter.support;
+package com.cwi.date.operator.support;
 
-import com.cwi.date.shifter.domain.Date;
+import com.cwi.date.operator.domain.Date;
 
 /**
  * Entity to write a date in a format as dd/MM/yyyy HH24:mi.

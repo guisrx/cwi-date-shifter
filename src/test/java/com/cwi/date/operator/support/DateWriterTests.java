@@ -1,12 +1,14 @@
-package com.cwi.date.shifter.support;
+package com.cwi.date.operator.support;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.cwi.date.shifter.domain.Date;
-import com.cwi.date.shifter.validation.DateValidator;
+import com.cwi.date.operator.domain.Date;
+import com.cwi.date.operator.support.DateParser;
+import com.cwi.date.operator.support.DateWriter;
+import com.cwi.date.operator.validation.DateValidator;
 
 /**
  * Test class of {@link DateWriter}.

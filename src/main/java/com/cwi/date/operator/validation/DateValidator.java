@@ -1,7 +1,7 @@
-package com.cwi.date.shifter.validation;
+package com.cwi.date.operator.validation;
 
-import com.cwi.date.shifter.domain.Date;
-import com.cwi.date.shifter.domain.Month;
+import com.cwi.date.operator.domain.Date;
+import com.cwi.date.operator.domain.Month;
 
 /**
  * Entity to validate inputed data.

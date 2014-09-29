@@ -1,7 +1,7 @@
-package com.cwi.date.shifter.support;
+package com.cwi.date.operator.support;
 
-import com.cwi.date.shifter.domain.Date;
-import com.cwi.date.shifter.domain.Month;
+import com.cwi.date.operator.domain.Date;
+import com.cwi.date.operator.domain.Month;
 
 /**
  * Converter from date to minutes and from minutes to date.

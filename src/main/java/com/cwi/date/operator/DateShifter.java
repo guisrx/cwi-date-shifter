@@ -1,14 +1,14 @@
-package com.cwi.date.shifter;
+package com.cwi.date.operator;
 
-import static com.cwi.date.shifter.validation.OperationValidator.SUBTRACTION_OPERATION;
-import static com.cwi.date.shifter.validation.OperationValidator.SUM_OPERATION;
+import static com.cwi.date.operator.validation.OperationValidator.SUBTRACTION_OPERATION;
+import static com.cwi.date.operator.validation.OperationValidator.SUM_OPERATION;
 
-import com.cwi.date.shifter.domain.Date;
-import com.cwi.date.shifter.support.DateParser;
-import com.cwi.date.shifter.support.DateWriter;
-import com.cwi.date.shifter.support.MinutesDateConverter;
-import com.cwi.date.shifter.validation.DateValidator;
-import com.cwi.date.shifter.validation.OperationValidator;
+import com.cwi.date.operator.domain.Date;
+import com.cwi.date.operator.support.DateParser;
+import com.cwi.date.operator.support.DateWriter;
+import com.cwi.date.operator.support.MinutesDateConverter;
+import com.cwi.date.operator.validation.DateValidator;
+import com.cwi.date.operator.validation.OperationValidator;
 
 /**
  * Entity to shift dates from strings.
