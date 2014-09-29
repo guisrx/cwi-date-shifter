@@ -6,8 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cwi.date.shifter.domain.Date;
-import com.cwi.date.shifter.support.DateParser;
-import com.cwi.date.shifter.support.DateWriter;
+import com.cwi.date.shifter.validation.DateValidator;
 
 /**
  * Test class of {@link DateParser}.
@@ -18,10 +17,12 @@ public class DateParserTests {
 
 	private DateParser subject;
 	private DateWriter writer;
+	private DateValidator dateValidator;
 
 	@Before
 	public void before() {
-		subject = new DateParser();
+		dateValidator = new DateValidator();
+		subject = new DateParser(dateValidator);
 		writer = new DateWriter();
 	}
 

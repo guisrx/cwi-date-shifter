@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.cwi.date.shifter.domain.Date;
+import com.cwi.date.shifter.validation.DateValidator;
 
 /**
  * Entity to encapsulate date parsing.
@@ -16,6 +17,11 @@ public class DateParser {
 	private static final String PATTERN = "([0-3][0-9])/([0-1][0-9])/([0-9]{4}) ([0-2][0-9]):([0-5][0-9])";
 	private static final Pattern DATE_PATTERN = Pattern.compile(PATTERN);
 
+	private final DateValidator dateValidator;
+
+	public DateParser(DateValidator dateValidator) {
+		this.dateValidator = dateValidator;
+	}
 
 	public Date parse(final String date) {
 		final Matcher matcher = DATE_PATTERN.matcher(date);
@@ -30,12 +36,16 @@ public class DateParser {
 		final String hour = matcher.group(4);
 		final String minute = matcher.group(5);
 
-		return new Date(
+		Date parsedDate = new Date(
 				Integer.parseInt(day),
 				Integer.parseInt(month),
 				Integer.parseInt(year),
 				Integer.parseInt(hour),
 				Integer.parseInt(minute));
+
+		dateValidator.validate(parsedDate);
+
+		return parsedDate;
 	}
 
 }

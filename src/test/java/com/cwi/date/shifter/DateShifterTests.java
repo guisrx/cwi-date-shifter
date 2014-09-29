@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import com.cwi.date.shifter.support.DateParser;
 import com.cwi.date.shifter.support.DateWriter;
+import com.cwi.date.shifter.validation.DateValidator;
 import com.cwi.date.shifter.validation.OperationValidator;
 
 /**
@@ -17,6 +18,7 @@ import com.cwi.date.shifter.validation.OperationValidator;
 public class DateShifterTests {
 
 	private OperationValidator operationValidator;
+	private DateValidator dateValidator;
 	private DateParser parser;
 	private DateWriter writer;
 	private DateShifter subject;
@@ -24,9 +26,10 @@ public class DateShifterTests {
 	@Before
 	public void before() {
 		operationValidator = new OperationValidator();
-		parser = new DateParser();
+		dateValidator = new DateValidator();
+		parser = new DateParser(dateValidator);
 		writer = new DateWriter();
-		subject = new DateShifter(parser, writer, operationValidator);
+		subject = new DateShifter(parser, writer, operationValidator, dateValidator);
 	}
 
 	@Test

@@ -4,6 +4,7 @@ import com.cwi.date.shifter.domain.Date;
 import com.cwi.date.shifter.domain.Month;
 import com.cwi.date.shifter.support.DateParser;
 import com.cwi.date.shifter.support.DateWriter;
+import com.cwi.date.shifter.validation.DateValidator;
 import com.cwi.date.shifter.validation.OperationValidator;
 
 /**
@@ -24,16 +25,18 @@ public class DateShifter {
 	private final DateParser parser;
 	private final DateWriter writer;
 	private final OperationValidator operationValidator;
-
+	private final DateValidator dateValidator;
 
 	public DateShifter(
 			DateParser parser,
 			DateWriter writer,
-			OperationValidator operationValidator) {
+			OperationValidator operationValidator,
+			DateValidator dateValidator) {
 
 		this.parser = parser;
 		this.writer = writer;
 		this.operationValidator = operationValidator;
+		this.dateValidator = dateValidator;
 	}
 
 
@@ -105,6 +108,8 @@ public class DateShifter {
 
 		// write result
 		final Date finalDate = new Date(finalDay +1, finalMonth, finalYear, finalHour, finalMinute);
+
+		dateValidator.validate(finalDate);
 
 		return writer.write(finalDate);
 	}
