@@ -16,7 +16,7 @@ public class DateShifter {
 	private static final char SUBTRACTION_OPERATION = '-';
 	private static final char SUM_OPERATION = '+';
 
-	private final long MINUTES_IN_A_YEAR = 525949;
+	private final long MINUTES_IN_A_YEAR = 525600;
 	private final long MINUTES_IN_A_DAY = 1440;
 	private final long MINUTES_IN_A_HOUR = 60;
 
@@ -51,12 +51,16 @@ public class DateShifter {
 
 		final long calculatedDateInMinutes = executeOperation(operation, givenMinutes, givenDateInMinutes);
 
+		System.out.println("calculatedDateInMinutes: " + calculatedDateInMinutes);
+
 
 		// convert minutes to date
 
 		// year
-		final int finalYear = (int)(calculatedDateInMinutes / MINUTES_IN_A_YEAR);
+		final int finalYear = (int)Math.floor(calculatedDateInMinutes / MINUTES_IN_A_YEAR);
 		final long dateMinusYears = calculatedDateInMinutes - finalYear * MINUTES_IN_A_YEAR;
+
+		System.out.println("dateMinusYears: " + finalYear * MINUTES_IN_A_YEAR);
 
 
 		// month
@@ -65,31 +69,42 @@ public class DateShifter {
 		Month currentMonth = Month.JANUARY;
 
 		for (final Month month : months) {
+			currentMonth = month;
 
 			if (month.fitInMonth(dateMinusMonth)) {
+				System.out.println("month: " + month + " minutos tenho: " + dateMinusMonth);
 				dateMinusMonth -= month.getMinutes();
-				currentMonth = month;
+				System.out.println("minutos fiquei: " + dateMinusMonth + " month: " + month.getMinutes());
+			} else {
+				break;
 			}
 		}
 		final int finalMonth = currentMonth.getMonthNumber();
 
 
+
 		// day
-		final int finalDay = (int)(dateMinusMonth / MINUTES_IN_A_DAY);
+		final int finalDay = (int)Math.floor(dateMinusMonth / MINUTES_IN_A_DAY);
 		final long dateMinusDays = dateMinusMonth - finalDay * MINUTES_IN_A_DAY;
+
+		System.out.println("dateMinusDays: " + finalDay * MINUTES_IN_A_DAY);
 
 
 		// hour
-		final int finalHour = (int)(dateMinusDays / MINUTES_IN_A_HOUR);
+		final int finalHour = (int)Math.floor(dateMinusDays / MINUTES_IN_A_HOUR);
 		final long dateMinusHours = dateMinusDays - finalHour * MINUTES_IN_A_HOUR;
+
+		System.out.println("dateMinusHours: " + finalHour * MINUTES_IN_A_HOUR);
 
 
 		// minute
 		final int finalMinute = (int)dateMinusHours;
 
+		System.out.println("finalMinute: " + finalMinute);
+
 
 		// write result
-		final Date finalDate = new Date(finalDay, finalMonth, finalYear, finalHour, finalMinute);
+		final Date finalDate = new Date(finalDay +1, finalMonth, finalYear, finalHour, finalMinute);
 
 		return writer.write(finalDate);
 	}
@@ -116,10 +131,19 @@ public class DateShifter {
 	private long convertGivenDateToMinutes(final Date givenDate) {
 
 		final long yearMinutes = MINUTES_IN_A_YEAR * givenDate.getYear();
+		System.out.println("yearMinutes: " + yearMinutes);
+
 		final long monthMinutes = firstYearMinuteToMonthInMinutes(givenDate.getMonth());
-		final long dayMinutes = MINUTES_IN_A_DAY * givenDate.getDay() -1;
-		final long hourMinutes = MINUTES_IN_A_HOUR * givenDate.getHour() -1;
+		System.out.println("monthMinutes: " + monthMinutes);
+
+		final long dayMinutes = MINUTES_IN_A_DAY * (givenDate.getDay() -1);
+		System.out.println("dayMinutes: " + dayMinutes);
+
+		final long hourMinutes = MINUTES_IN_A_HOUR * givenDate.getHour();
+		System.out.println("hourMinutes: " + hourMinutes);
+
 		final long minute = givenDate.getMinute();
+		System.out.println("minute: " + minute);
 
 		final long givenDateInMinutes =
 				yearMinutes +
