@@ -22,7 +22,6 @@
 		<java.target.version>1.7</java.target.version>
 
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
 
 		<junit.version>4.11</junit.version>
 
@@ -54,22 +53,6 @@
 
 	<build>
 		<plugins>
-
-			<plugin>
-				<!-- Build an executable JAR -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>${maven-jar-plugin.version}</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.selau.thoughtworks.railroad.Main</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
