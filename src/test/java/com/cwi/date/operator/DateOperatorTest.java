@@ -17,7 +17,7 @@ import com.cwi.date.operator.validation.OperationValidator;
  * @author selau
  *
  */
-public class DateOperatorTests {
+public class DateOperatorTest {
 
 	private OperationValidator operationValidator;
 	private DateValidator dateValidator;

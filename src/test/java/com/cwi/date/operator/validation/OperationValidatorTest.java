@@ -10,7 +10,7 @@ import com.cwi.date.operator.validation.OperationValidator;
  * @author selau
  *
  */
-public class OperationValidatorTests {
+public class OperationValidatorTest {
 
 	private OperationValidator subject;
 

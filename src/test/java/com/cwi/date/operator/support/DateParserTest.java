@@ -15,7 +15,7 @@ import com.cwi.date.operator.validation.DateValidator;
  * @author selau
  *
  */
-public class DateParserTests {
+public class DateParserTest {
 
 	private DateParser subject;
 	private DateWriter writer;

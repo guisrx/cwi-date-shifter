@@ -17,7 +17,7 @@ import com.cwi.date.operator.support.MinutesDateConverter;
  * @author selau
  *
  */
-public class MinutesDateConverterTests {
+public class MinutesDateConverterTest {
 
 	private MinutesDateConverter subject;
 
