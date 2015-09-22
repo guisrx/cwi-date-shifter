@@ -34,15 +34,18 @@ changeDate("01/03/2010 23:00", '+', 4000) == "04/03/2010 17:40"
 
 ### Design ###
 
-Using inversion of control and dependency injection principles, I tried to design stateless objects to execute operations over immutable data objects.
+Using inversion of control, immutability and dependency injection principles, I tried to design stateless objects to execute operations over immutable data objects.
 
-To calculate the three main classes of problems of this solution I used:
+To calculate the operation I used:
 
-* Distance along a certain route: a simple graph path walking algorithm accumulating the distance walked.
-* Number of different routes between two towns: a iterative deep first traversal algorithm with different stop conditions accordingly with the question.
-* Shortest route between two towns: Dijkstra's algorithm implementation using a priority queue.
-
-To store the railroad graph I created an object *Railroad* with a map of the distances between the nodes (*Map<Edge, Integer>*), a map with a set of the adjacents of each node (*Map<Node, Set<Node>>*) and a set of the nodes (*Set<Node>*).
+* DateOperator: stateless class that executes the operation
+* Date: immutable POJO that represents a Date operated or to be operated
+* Month: enumeration of time constants
+* DateParser: parses the string into a Date object
+* DateWriter: writes a Date object as the intended string output
+* OperationValidator: validates the input operation
+* DateValidator: validate if a given Date object is coherent
+* MinutesDateConverter: converts a Date object to its minutes sum
 
 ### Dependencies ###
 
